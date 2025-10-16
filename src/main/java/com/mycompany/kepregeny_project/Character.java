@@ -64,8 +64,8 @@ public abstract class Character
     
     public abstract String getDisplayName();
 
-    // --- Getters ---
+    
     public String getRealName() { return realName; }
     public List<ComicBook> getComicBookAppearances() { return comicBookAppearances; }
-    public Map<Character, String> getAffiliations() { return affiliations; } // Getter for the map
+    public Map<Character, String> getAffiliations() { return affiliations; } 
 }

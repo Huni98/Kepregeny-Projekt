@@ -19,7 +19,7 @@ public class Publisher
         this.country = country;
     }
 
-    // Getters and Setters
+    
     public String getName() 
     {
         return name;

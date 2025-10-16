@@ -94,6 +94,7 @@ public class Kepregeny_Project
             System.out.println("- " + edition.getEditionName() + " published by " + edition.getPublisher().getName());
         }
         System.out.println("--------------------------");
+        
     }
 }
 

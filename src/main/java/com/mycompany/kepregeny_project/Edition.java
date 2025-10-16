@@ -27,7 +27,6 @@ public class Edition
         this.comicBook = comicBook;
     }
 
-    // Getters and Setters
     public String getEditionName() 
     {
         return editionName;

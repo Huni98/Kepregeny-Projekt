@@ -13,7 +13,7 @@ import java.util.List;
 
 public class Superhero extends Character 
 {
-    // Attributes specific to Superheroes (and Villains)
+    
     private String alias;
     private List<String> powers;
     private List<String> affiliations;
@@ -21,7 +21,7 @@ public class Superhero extends Character
 
     public Superhero(String realName, String originStory, String alias) 
     {
-        super(realName, originStory); // Calls the parent class constructor
+        super(realName, originStory); 
         this.alias = alias;
         this.powers = new ArrayList<>();
         this.affiliations = new ArrayList<>();

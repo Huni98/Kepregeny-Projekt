@@ -13,6 +13,7 @@ import java.util.List;
 
 public class ComicBook 
 {
+    
     private String title;
     private String genre;
     private List<Writer> writers;

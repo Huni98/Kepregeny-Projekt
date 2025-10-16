@@ -19,6 +19,6 @@ public class Civilian extends Character
     @Override
     public String getDisplayName() 
     {
-        return getRealName(); // A civilian's display name is their real name
+        return getRealName(); 
     }
 }

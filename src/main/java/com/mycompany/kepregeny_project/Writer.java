@@ -29,7 +29,7 @@ public class Writer
         this.comicBooks.add(comicBook);
     }
 
-    // Getters and Setters
+    
     public String getName() 
     {
         return name;

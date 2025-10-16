@@ -20,7 +20,7 @@ public class Villain extends Character
 
     public Villain(String realName, String originStory, String alias) 
     {
-        super(realName, originStory); // Calls the parent class constructor
+        super(realName, originStory);
         this.alias = alias;
         this.powers = new ArrayList<>();
         this.affiliations = new ArrayList<>();
