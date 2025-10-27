@@ -24,6 +24,9 @@ public abstract class Character
     
     // NEW: Map to store the artists who created this character and their role
     private Map<Artist, String> creatorArtists;
+    
+    // NEW: Map to store the writers who created this character and their role
+    private Map<Writer, String> creatorWriters;
 
     public Character(String realName, String originStory) 
     {
@@ -32,6 +35,7 @@ public abstract class Character
         this.comicBookAppearances = new ArrayList<>();
         this.affiliations = new HashMap<>(); // Initialize as a HashMap
         this.creatorArtists = new HashMap<>(); // NEW: Initialize creator map
+        this.creatorWriters = new HashMap<>(); // NEW: Initialize writer creator map
     }
     
     /**
@@ -72,6 +76,23 @@ public abstract class Character
             artist.addCharacterCoCreated(this);
         }
     }
+    
+    /**
+     * NEW: Adds a creating writer to this character. (Method Overload)
+     * @param writer The writer who co-created the character.
+     * @param role Their role (e.g., "Co-creator (Writer)").
+     */
+    public void addCreator(Writer writer, String role) 
+    {
+        if (!this.creatorWriters.containsKey(writer)) 
+        {
+            this.creatorWriters.put(writer, role);
+            // Also update the writer's list to maintain consistency
+            // (This assumes you've added the 'addCharacterCoCreated' method to your Writer class,
+            // just like you have in your Artist class)
+            writer.addCharacterCoCreated(this);
+        }
+    }
 
     public void addAppearance(ComicBook comicBook) 
     {
@@ -90,4 +111,7 @@ public abstract class Character
     
     // NEW: Getter for the creators map
     public Map<Artist, String> getCreatorArtists() { return creatorArtists; }
+    
+    // NEW: Getter for the writer creators map
+    public Map<Writer, String> getCreatorWriters() { return creatorWriters; }
 }

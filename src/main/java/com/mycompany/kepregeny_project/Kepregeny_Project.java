@@ -16,85 +16,116 @@ import java.util.Map;
 public class Kepregeny_Project 
 {
 
-    public static void main(String[] args) {
-        System.out.println("--- Setting up the Comic Book Universe ---");
+     public static void main(String[] args) {
+        System.out.println("--- Setting up Marvel Comics Test Scenario ---");
 
-        // 1. Create Publishers and Writers
+        // 1. Create Publisher
         Publisher marvel = new Publisher("Marvel Comics", "USA");
-        Writer stanLee = new Writer("Stan Lee", "American");
-        Writer steveDitko = new Writer("Steve Ditko", "American");
 
-        // 2. Create Characters using Inheritance
-        // Note: The Alignment is set automatically by the subclass constructor.
+        // 2. Create Writers and Artists
+        // These are the ORIGINAL CREATORS for the *characters*
+        Writer stanLee = new Writer("Stan Lee", "American");
+        Artist steveDitko = new Artist("Steve Ditko", "American");
+        
+        // These are the creative team for a *specific comic book issue*
+        Writer danSlott = new Writer("Dan Slott", "American");
+        Artist humbertoRamos = new Artist("Humberto Ramos", "Mexican");
+
+        // 3. Create Characters
         Superhero spiderMan = new Superhero("Peter Parker", "Bitten by a radioactive spider.", "Spider-Man");
         Villain greenGoblin = new Villain("Norman Osborn", "Exposed to an experimental formula.", "Green Goblin");
-        Civilian maryJane = new Civilian("Mary Jane Watson", "An aspiring actress and model.");
-        
-        System.out.println("Characters created: " + spiderMan.getDisplayName() + ", " + greenGoblin.getDisplayName() + ", " + maryJane.getDisplayName());
+        Civilian maryJane = new Civilian("Mary Jane Watson", "Aspiring actress and model.");
 
-        // 3. Establish Character-to-Character Affiliations
-        spiderMan.addReciprocalAffiliation(maryJane, "Love Interest");
+        // 4. Link Original Creators to Characters
+        spiderMan.addCreator(stanLee, "Co-creator (Writer)");
+        spiderMan.addCreator(steveDitko, "Co-creator (Artist)");
+        
+        greenGoblin.addCreator(stanLee, "Co-creator (Writer)");
+        greenGoblin.addCreator(steveDitko, "Co-creator (Artist)");
+        
+        maryJane.addCreator(stanLee, "Co-creator (Writer)");
+        
+        System.out.println("Characters created and original creators assigned.");
+
+        // 5. Establish Character-to-Character Affiliations
         spiderMan.addReciprocalAffiliation(greenGoblin, "Arch-Nemesis");
+        spiderMan.addReciprocalAffiliation(maryJane, "Ally / Spouse");
         System.out.println("Character affiliations have been set.");
         System.out.println("----------------------------------------\n");
 
 
-        // 4. Create a Comic Book
-        ComicBook amazingFantasy15 = new ComicBook("Amazing Fantasy #15", "Superhero");
+        // 6. Create a Comic Book
+        ComicBook asm700 = new ComicBook("The Amazing Spider-Man #700", "Superhero");
 
-        // 5. Link Writers and Characters to the Comic Book
-        amazingFantasy15.addWriter(stanLee);
-        amazingFantasy15.addWriter(steveDitko);
-        amazingFantasy15.addCharacter(spiderMan); // Adding a Superhero
-        amazingFantasy15.addCharacter(greenGoblin); // Adding a Villain
-        amazingFantasy15.addCharacter(maryJane); // Adding a Civilian
+        // 7. Link Writers and Artists *to that specific comic book*
+        asm700.addWriter(danSlott);
+        asm700.addArtist(humbertoRamos); // Penciler
+        // In a real app, you might add more artists for inking, coloring, etc.
 
-        // 6. Create a specific Edition for the Comic Book
-        Edition firstPrinting = new Edition(
-            "First Printing",
-            new Date(), // Using today's date for simplicity
-            "978-0785126330",
+        // 8. Link Characters that appear in the comic
+        asm700.addCharacter(spiderMan);
+        asm700.addCharacter(greenGoblin); // Assuming he makes an appearance
+        asm700.addCharacter(maryJane);
+
+        // 9. Create a specific Edition for the Comic Book
+        Edition asm700Edition = new Edition(
+            "Standard Cover (2012)",
+            new Date(), // Placeholder date
+            "B00A85LI8A", // Example ASIN/ISBN
             marvel,
-            amazingFantasy15
+            asm700
         );
-        amazingFantasy15.addEdition(firstPrinting);
+        asm700.addEdition(asm700Edition);
 
 
-        // 7. --- Display the Results ---
-        // Print all the information linked to our ComicBook object to prove it works.
+        // 10. --- Display the Results ---
         System.out.println("--- COMIC BOOK DETAILS ---");
-        System.out.println("Title: " + amazingFantasy15.getTitle());
-        System.out.println("Genre: " + amazingFantasy15.getGenre());
+        System.out.println("Title: " + asm700.getTitle());
 
-        // Display Writers
-        System.out.println("\nWriters:");
-        for (Writer writer : amazingFantasy15.getWriters()) {
-            System.out.println("- " + writer.getName());
+        // Display Writers *for this issue*
+        System.out.println("\nCreative Team for this Comic Book:");
+        for (Writer writer : asm700.getWriters()) {
+            System.out.println("- Writer: " + writer.getName());
+        }
+        
+        // Display Artists *for this issue*
+        for (Artist artist : asm700.getArtists()) {
+            System.out.println("- Artist: " + artist.getName());
         }
 
-        // Display Characters and their affiliations (demonstrates polymorphism and linking)
-        System.out.println("\nFeatured Characters:");
-        List<Character> characters = amazingFantasy15.getFeaturedCharacters();
-        for (Character character : characters) {
-            System.out.println("- " + character.getDisplayName() + " (Real Name: " + character.getRealName() + ")");
+        // Display Characters *in this issue*
+        System.out.println("\nFeatured Characters in this Comic:");
+        for (Character character : asm700.getFeaturedCharacters()) {
+            System.out.println("- " + character.getDisplayName());
             
-            // Display this character's affiliations
+            // --- Display Original Creators for the Character ---
+            Map<Writer, String> creatorWriters = character.getCreatorWriters();
+            Map<Artist, String> creatorArtists = character.getCreatorArtists();
+            
+            if (!creatorWriters.isEmpty() || !creatorArtists.isEmpty()) {
+                System.out.println("  (Original Creators):");
+                
+                // Display writer-creators
+                for (Map.Entry<Writer, String> entry : creatorWriters.entrySet()) {
+                    System.out.println("    -> " + entry.getKey().getName() + " (" + entry.getValue() + ")");
+                }
+                
+                // Display artist-creators
+                for (Map.Entry<Artist, String> entry : creatorArtists.entrySet()) {
+                    System.out.println("    -> " + entry.getKey().getName() + " (" + entry.getValue() + ")");
+                }
+            }
+            
+            // Display *this character's* affiliations
             Map<Character, String> affiliations = character.getAffiliations();
             if (!affiliations.isEmpty()) {
-                System.out.println("  Affiliations:");
+                System.out.println("  (Affiliations):");
                 for (Map.Entry<Character, String> entry : affiliations.entrySet()) {
                     System.out.println("    -> " + entry.getKey().getDisplayName() + " (" + entry.getValue() + ")");
                 }
             }
         }
-        
-        // Display Edition Info
-        System.out.println("\nEditions:");
-        for (Edition edition : amazingFantasy15.getEditions()) {
-            System.out.println("- " + edition.getEditionName() + " published by " + edition.getPublisher().getName());
-        }
         System.out.println("--------------------------");
-        
     }
 }
 
