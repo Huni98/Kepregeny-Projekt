@@ -20,6 +20,7 @@ public class ComicBook
     private List<Edition> editions;
     // This list can hold Superhero, Villain, and Civilian objects!
     private List<Character> featuredCharacters;
+    private List<Artist> artists; // NEW: List of artists
 
     public ComicBook(String title, String genre) 
     {
@@ -28,6 +29,7 @@ public class ComicBook
         this.writers = new ArrayList<>();
         this.editions = new ArrayList<>();
         this.featuredCharacters = new ArrayList<>();
+        this.artists = new ArrayList<>(); // NEW: Initialize artist list
     }
 
     // This single method works for any character type
@@ -59,4 +61,17 @@ public class ComicBook
     public List<Writer> getWriters() { return writers; }
     public List<Edition> getEditions() { return editions; }
     
+    
+    // NEW: Getter for the artists list
+    public List<Artist> getArtists() { return artists; }
+    
+    public void addArtist(Artist artist) 
+    {
+        if (!this.artists.contains(artist)) 
+        {
+            this.artists.add(artist);
+            // Also update the artist's work history
+            artist.addComicBook(this);
+        }
+    }
 }
