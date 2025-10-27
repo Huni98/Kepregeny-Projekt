@@ -2,7 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.kepregeny_project;
+package ro.madarash.kepregeny_project;
+
 
 /**
  *
@@ -12,6 +13,7 @@ package com.mycompany.kepregeny_project;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+
 
 public class Kepregeny_Project 
 {

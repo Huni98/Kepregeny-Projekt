@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.kepregeny_project;
+package ro.madarash.kepregeny_project;
 
 /**
  *
@@ -11,31 +11,24 @@ package com.mycompany.kepregeny_project;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Artist 
+public class Writer 
 {
     private String name;
     private String nationality;
-    private List<ComicBook> comicBooksWorkedOn;
+    private List<ComicBook> comicBooks;
     private List<Character> charactersCoCreated;
 
-    public Artist(String name, String nationality) 
+    public Writer(String name, String nationality) 
     {
         this.name = name;
         this.nationality = nationality;
-        this.comicBooksWorkedOn = new ArrayList<>();
+        this.comicBooks = new ArrayList<>();
         this.charactersCoCreated = new ArrayList<>();
     }
 
-    /**
-     * Adds a comic book to this artist's work history.
-     * This method is typically called by the ComicBook class to ensure a two-way link.
-     */
     public void addComicBook(ComicBook comicBook) 
     {
-        if (!this.comicBooksWorkedOn.contains(comicBook)) 
-        {
-            this.comicBooksWorkedOn.add(comicBook);
-        }
+        this.comicBooks.add(comicBook);
     }
     
     /**
@@ -49,21 +42,18 @@ public class Artist
             this.charactersCoCreated.add(character);
         }
     }
-
-    // --- Getters ---
+    
     public String getName() 
     {
         return name;
     }
 
-    public List<ComicBook> getComicBooksWorkedOn() 
+    public List<ComicBook> getComicBooks() 
     {
-        return comicBooksWorkedOn;
+        return comicBooks;
     }
     
-    public List<Character> getCharactersCoCreated() 
-    {
+    public List<Character> getCharactersCoCreated() {
         return charactersCoCreated;
     }
 }
-
