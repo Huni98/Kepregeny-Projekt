@@ -49,9 +49,9 @@ public class Kepregeny_Project
         
         System.out.println("Characters created and original creators assigned.");
 
-        // 5. Establish Character-to-Character Affiliations
-        spiderMan.addReciprocalAffiliation(greenGoblin, "Arch-Nemesis");
-        spiderMan.addReciprocalAffiliation(maryJane, "Ally / Spouse");
+        // 5. Establish ComicCharacter-to-ComicCharacter Affiliations
+        spiderMan.addReciprocalCharacterAffiliation(greenGoblin, "Arch-Nemesis");
+        spiderMan.addReciprocalCharacterAffiliation(maryJane, "Ally / Spouse");
         System.out.println("Character affiliations have been set.");
         System.out.println("----------------------------------------\n");
 
@@ -97,10 +97,10 @@ public class Kepregeny_Project
 
         // Display Characters *in this issue*
         System.out.println("\nFeatured Characters in this Comic:");
-        for (Character character : asm700.getFeaturedCharacters()) {
+        for (ComicCharacter character : asm700.getFeaturedCharacters()) {
             System.out.println("- " + character.getDisplayName());
             
-            // --- Display Original Creators for the Character ---
+            // --- Display Original Creators for the ComicCharacter ---
             Map<Writer, String> creatorWriters = character.getCreatorWriters();
             Map<Artist, String> creatorArtists = character.getCreatorArtists();
             
@@ -119,10 +119,10 @@ public class Kepregeny_Project
             }
             
             // Display *this character's* affiliations
-            Map<Character, String> affiliations = character.getAffiliations();
+            Map<ComicCharacter, String> affiliations = character.getCharacterAffiliations();
             if (!affiliations.isEmpty()) {
                 System.out.println("  (Affiliations):");
-                for (Map.Entry<Character, String> entry : affiliations.entrySet()) {
+                for (Map.Entry<ComicCharacter, String> entry : affiliations.entrySet()) {
                     System.out.println("    -> " + entry.getKey().getDisplayName() + " (" + entry.getValue() + ")");
                 }
             }

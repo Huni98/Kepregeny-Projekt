@@ -41,4 +41,36 @@ public class Edition
     {
         return comicBook;
     }
+    
+    public String getIsbn()
+    {
+        return isbn;
+    }
+    
+    public Date getPublicationDate()
+    {
+        return publicationDate;
+    }
+
+    public void setEditionName(String editionName) {
+        this.editionName = editionName;
+    }
+
+    public void setPublicationDate(Date publicationDate) {
+        this.publicationDate = publicationDate;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
+
+    public void setComicBook(ComicBook comicBook) {
+        this.comicBook = comicBook;
+    }
+    
+    
 }

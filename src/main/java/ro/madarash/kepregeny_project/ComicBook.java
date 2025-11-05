@@ -18,9 +18,10 @@ public class ComicBook
     private String genre;
     private List<Writer> writers;
     private List<Edition> editions;
+    private List<Artist> artists;
     // This list can hold Superhero, Villain, and Civilian objects!
-    private List<Character> featuredCharacters;
-    private List<Artist> artists; // NEW: List of artists
+    private List<ComicCharacter> featuredCharacters;
+    
 
     public ComicBook(String title, String genre) 
     {
@@ -29,11 +30,11 @@ public class ComicBook
         this.writers = new ArrayList<>();
         this.editions = new ArrayList<>();
         this.featuredCharacters = new ArrayList<>();
-        this.artists = new ArrayList<>(); // NEW: Initialize artist list
+        this.artists = new ArrayList<>();
     }
 
     // This single method works for any character type
-    public void addCharacter(Character character) 
+    public void addCharacter(ComicCharacter character) 
     {
         if (!this.featuredCharacters.contains(character)) 
         {
@@ -43,7 +44,7 @@ public class ComicBook
     }
 
     
-    public List<Character> getFeaturedCharacters() 
+    public List<ComicCharacter> getFeaturedCharacters() 
     {
         return featuredCharacters;
     }
@@ -54,6 +55,30 @@ public class ComicBook
 
     public void addEdition(Edition edition) {
         this.editions.add(edition);
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public void setWriters(List<Writer> writers) {
+        this.writers = writers;
+    }
+
+    public void setEditions(List<Edition> editions) {
+        this.editions = editions;
+    }
+
+    public void setFeaturedCharacters(List<ComicCharacter> featuredCharacters) {
+        this.featuredCharacters = featuredCharacters;
+    }
+
+    public void setArtists(List<Artist> artists) {
+        this.artists = artists;
     }
     
     public String getTitle() { return title; }
@@ -74,4 +99,8 @@ public class ComicBook
             artist.addComicBook(this);
         }
     }
+    
+    public void clearWriters() { this.writers.clear(); }
+    public void clearArtists() { this.artists.clear(); }
+    public void clearCharacters() { this.featuredCharacters.clear(); }
 }

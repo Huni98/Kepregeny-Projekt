@@ -8,7 +8,7 @@ package ro.madarash.kepregeny_project;
  *
  * @author hunor
  */
-public class Civilian extends Character 
+public class Civilian extends ComicCharacter 
 {
 
     public Civilian(String realName, String originStory) 
