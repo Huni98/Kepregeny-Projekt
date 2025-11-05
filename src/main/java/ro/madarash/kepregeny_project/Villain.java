@@ -11,7 +11,7 @@ package ro.madarash.kepregeny_project;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Villain extends Character 
+public class Villain extends ComicCharacter 
 {
     private String alias;
     private List<String> powers;
@@ -31,4 +31,22 @@ public class Villain extends Character
     {
         return this.alias;
     }
+    
+    public List<String> getPowers() {
+        return this.powers;
+    }
+    
+    // Methods to add powers, affiliations, etc.
+    public void addPower(String power) { this.powers.add(power); }
+    
+    public void addAffiliation(String teamName) {
+        this.affiliations.add(teamName);
+    }
+    
+    public List<String> getAffiliations() {
+        return this.affiliations;
+    }
+    
+    public void setAlias(String alias) { this.alias = alias; }
+    public void clearPowers() { this.powers.clear(); }
 }

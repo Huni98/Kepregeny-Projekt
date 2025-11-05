@@ -16,7 +16,7 @@ public class Writer
     private String name;
     private String nationality;
     private List<ComicBook> comicBooks;
-    private List<Character> charactersCoCreated;
+    private List<ComicCharacter> charactersCoCreated;
 
     public Writer(String name, String nationality) 
     {
@@ -35,7 +35,7 @@ public class Writer
      * Links a character this artist co-created.
      * This method is typically called by the Character class to ensure a two-way link.
      */
-    public void addCharacterCoCreated(Character character)
+    public void addCharacterCoCreated(ComicCharacter character)
     {
         if (!this.charactersCoCreated.contains(character)) 
         {
@@ -47,13 +47,29 @@ public class Writer
     {
         return name;
     }
+    
+    public String getNationality()
+    {
+        return nationality;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setNationality(String nationality) {
+        this.nationality = nationality;
+    }
+
+    
     public List<ComicBook> getComicBooks() 
     {
         return comicBooks;
     }
     
-    public List<Character> getCharactersCoCreated() {
+    public List<ComicCharacter> getCharactersCoCreated() {
         return charactersCoCreated;
     }
+    
+    
 }
