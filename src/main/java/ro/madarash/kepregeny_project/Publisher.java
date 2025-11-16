@@ -5,6 +5,7 @@
 package ro.madarash.kepregeny_project;
 
 import java.util.Date;
+import java.util.Objects;
 
 /**
  *
@@ -55,4 +56,25 @@ public class Publisher {
     public String toString() {
         return this.name;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        // 1. Check if it's the exact same object in memory
+        if (this == obj) {
+            return true;
+        }
+        // 2. Check if the other object is null or not the same class
+        if (obj == null || getClass() != obj.getClass()) {
+            return false;
+        }
+        // 3. Cast the object and compare the 'name' field
+        Publisher other = (Publisher) obj;
+        return Objects.equals(this.name, other.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
+    }
+    
 }
