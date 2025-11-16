@@ -50,4 +50,9 @@ public class Publisher {
     public String getCountry() {
         return country;
     }
+    
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

@@ -63,4 +63,11 @@ public class Writer {
         return charactersCoCreated;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
+    
+    
+
 }
