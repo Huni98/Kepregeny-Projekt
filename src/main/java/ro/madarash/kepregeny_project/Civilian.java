@@ -8,17 +8,14 @@ package ro.madarash.kepregeny_project;
  *
  * @author hunor
  */
-public class Civilian extends ComicCharacter 
-{
+public class Civilian extends ComicCharacter {
 
-    public Civilian(String realName, String originStory) 
-    {
+    public Civilian(String realName, String originStory) {
         super(realName, originStory);
     }
-    
+
     @Override
-    public String getDisplayName() 
-    {
-        return getRealName(); 
+    public String getDisplayName() {
+        return getRealName();
     }
 }

@@ -1,24 +1,19 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
-
 package ro.madarash.kepregeny_project;
-
 
 /**
  *
  * @author hunor
  */
-
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+public class Kepregeny_Project {
 
-public class Kepregeny_Project 
-{
-
-     public static void main(String[] args) {
+    public static void main(String[] args) {
         System.out.println("--- Setting up Marvel Comics Test Scenario ---");
 
         // 1. Create Publisher
@@ -28,7 +23,7 @@ public class Kepregeny_Project
         // These are the ORIGINAL CREATORS for the *characters*
         Writer stanLee = new Writer("Stan Lee", "American");
         Artist steveDitko = new Artist("Steve Ditko", "American");
-        
+
         // These are the creative team for a *specific comic book issue*
         Writer danSlott = new Writer("Dan Slott", "American");
         Artist humbertoRamos = new Artist("Humberto Ramos", "Mexican");
@@ -41,12 +36,12 @@ public class Kepregeny_Project
         // 4. Link Original Creators to Characters
         spiderMan.addCreator(stanLee, "Co-creator (Writer)");
         spiderMan.addCreator(steveDitko, "Co-creator (Artist)");
-        
+
         greenGoblin.addCreator(stanLee, "Co-creator (Writer)");
         greenGoblin.addCreator(steveDitko, "Co-creator (Artist)");
-        
+
         maryJane.addCreator(stanLee, "Co-creator (Writer)");
-        
+
         System.out.println("Characters created and original creators assigned.");
 
         // 5. Establish ComicCharacter-to-ComicCharacter Affiliations
@@ -54,7 +49,6 @@ public class Kepregeny_Project
         spiderMan.addReciprocalCharacterAffiliation(maryJane, "Ally / Spouse");
         System.out.println("Character affiliations have been set.");
         System.out.println("----------------------------------------\n");
-
 
         // 6. Create a Comic Book
         ComicBook asm700 = new ComicBook("The Amazing Spider-Man #700", "Superhero");
@@ -71,14 +65,13 @@ public class Kepregeny_Project
 
         // 9. Create a specific Edition for the Comic Book
         Edition asm700Edition = new Edition(
-            "Standard Cover (2012)",
-            new Date(), // Placeholder date
-            "B00A85LI8A", // Example ASIN/ISBN
-            marvel,
-            asm700
+                "Standard Cover (2012)",
+                new Date(), // Placeholder date
+                "B00A85LI8A", // Example ASIN/ISBN
+                marvel,
+                asm700
         );
         asm700.addEdition(asm700Edition);
-
 
         // 10. --- Display the Results ---
         System.out.println("--- COMIC BOOK DETAILS ---");
@@ -89,7 +82,7 @@ public class Kepregeny_Project
         for (Writer writer : asm700.getWriters()) {
             System.out.println("- Writer: " + writer.getName());
         }
-        
+
         // Display Artists *for this issue*
         for (Artist artist : asm700.getArtists()) {
             System.out.println("- Artist: " + artist.getName());
@@ -99,25 +92,25 @@ public class Kepregeny_Project
         System.out.println("\nFeatured Characters in this Comic:");
         for (ComicCharacter character : asm700.getFeaturedCharacters()) {
             System.out.println("- " + character.getDisplayName());
-            
+
             // --- Display Original Creators for the ComicCharacter ---
             Map<Writer, String> creatorWriters = character.getCreatorWriters();
             Map<Artist, String> creatorArtists = character.getCreatorArtists();
-            
+
             if (!creatorWriters.isEmpty() || !creatorArtists.isEmpty()) {
                 System.out.println("  (Original Creators):");
-                
+
                 // Display writer-creators
                 for (Map.Entry<Writer, String> entry : creatorWriters.entrySet()) {
                     System.out.println("    -> " + entry.getKey().getName() + " (" + entry.getValue() + ")");
                 }
-                
+
                 // Display artist-creators
                 for (Map.Entry<Artist, String> entry : creatorArtists.entrySet()) {
                     System.out.println("    -> " + entry.getKey().getName() + " (" + entry.getValue() + ")");
                 }
             }
-            
+
             // Display *this character's* affiliations
             Map<ComicCharacter, String> affiliations = character.getCharacterAffiliations();
             if (!affiliations.isEmpty()) {
@@ -130,4 +123,3 @@ public class Kepregeny_Project
         System.out.println("--------------------------");
     }
 }
-
