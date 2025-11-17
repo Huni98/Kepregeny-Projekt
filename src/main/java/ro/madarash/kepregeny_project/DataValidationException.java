@@ -8,14 +8,9 @@ package ro.madarash.kepregeny_project;
  *
  * @author hunor
  */
-public class Civilian extends ComicCharacter {
+public class DataValidationException extends Exception {
 
-    public Civilian(String realName, String originStory) {
-        super(realName, originStory);
-    }
-
-    @Override
-    public String getDisplayName() {
-        return getRealName();
+    public DataValidationException(String message) {
+        super(message);
     }
 }

@@ -11,44 +11,49 @@ package ro.madarash.kepregeny_project;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Superhero extends ComicCharacter 
-{
-    
+public class Superhero extends ComicCharacter implements IPowerful {
+
     private String alias;
     private List<String> powers;
     private List<String> affiliations;
-    
 
-    public Superhero(String realName, String originStory, String alias) 
-    {
-        super(realName, originStory); 
+    public Superhero(String realName, String originStory, String alias) {
+        super(realName, originStory);
         this.alias = alias;
         this.powers = new ArrayList<>();
         this.affiliations = new ArrayList<>();
     }
-    
+
     @Override
-    public String getDisplayName() 
-    {
-        return this.alias; // A superhero's display name is their alias
+    public String getDisplayName() {
+        return this.alias;
     }
-    
+
+    @Override
     public List<String> getPowers() {
         return this.powers;
     }
 
     // Methods to add powers, affiliations, etc.
-    public void addPower(String power) { this.powers.add(power); }
-    
-    // --- ADD THESE TWO METHODS ---
+    @Override
+    public void addPower(String power) {
+        this.powers.add(power);
+    }
+
     public void addAffiliation(String teamName) {
         this.affiliations.add(teamName);
     }
-    
+
     public List<String> getAffiliations() {
         return this.affiliations;
     }
-    
-    public void setAlias(String alias) { this.alias = alias; }
-    public void clearPowers() { this.powers.clear(); }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
+    }
+
+    @Override
+    public void clearPowers() {
+        this.powers.clear();
+    }
 }

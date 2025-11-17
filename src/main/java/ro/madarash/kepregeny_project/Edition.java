@@ -10,16 +10,15 @@ package ro.madarash.kepregeny_project;
  */
 import java.util.Date;
 
-public class Edition 
-{
+public class Edition {
+
     private String editionName;
     private Date publicationDate;
     private String isbn;
     private Publisher publisher;
     private ComicBook comicBook;
 
-    public Edition(String editionName, Date publicationDate, String isbn, Publisher publisher, ComicBook comicBook) 
-    {
+    public Edition(String editionName, Date publicationDate, String isbn, Publisher publisher, ComicBook comicBook) {
         this.editionName = editionName;
         this.publicationDate = publicationDate;
         this.isbn = isbn;
@@ -27,28 +26,23 @@ public class Edition
         this.comicBook = comicBook;
     }
 
-    public String getEditionName() 
-    {
+    public String getEditionName() {
         return editionName;
     }
 
-    public Publisher getPublisher() 
-    {
+    public Publisher getPublisher() {
         return publisher;
     }
 
-    public ComicBook getComicBook() 
-    {
+    public ComicBook getComicBook() {
         return comicBook;
     }
-    
-    public String getIsbn()
-    {
+
+    public String getIsbn() {
         return isbn;
     }
-    
-    public Date getPublicationDate()
-    {
+
+    public Date getPublicationDate() {
         return publicationDate;
     }
 
@@ -71,6 +65,5 @@ public class Edition
     public void setComicBook(ComicBook comicBook) {
         this.comicBook = comicBook;
     }
-    
-    
+
 }

@@ -11,15 +11,14 @@ package ro.madarash.kepregeny_project;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Artist 
-{
+public class Artist {
+
     private String name;
     private String nationality;
     private List<ComicBook> comicBooksWorkedOn;
     private List<ComicCharacter> charactersCoCreated;
 
-    public Artist(String name, String nationality) 
-    {
+    public Artist(String name, String nationality) {
         this.name = name;
         this.nationality = nationality;
         this.comicBooksWorkedOn = new ArrayList<>();
@@ -27,37 +26,31 @@ public class Artist
     }
 
     /**
-     * Adds a comic book to this artist's work history.
-     * This method is typically called by the ComicBook class to ensure a two-way link.
+     * Adds a comic book to this artist's work history. This method is typically
+     * called by the ComicBook class to ensure a two-way link.
      */
-    public void addComicBook(ComicBook comicBook) 
-    {
-        if (!this.comicBooksWorkedOn.contains(comicBook)) 
-        {
+    public void addComicBook(ComicBook comicBook) {
+        if (!this.comicBooksWorkedOn.contains(comicBook)) {
             this.comicBooksWorkedOn.add(comicBook);
         }
     }
-    
+
     /**
-     * Links a character this artist co-created.
-     * This method is typically called by the Character class to ensure a two-way link.
+     * Links a character this artist co-created. This method is typically called
+     * by the Character class to ensure a two-way link.
      */
-    public void addCharacterCoCreated(ComicCharacter character)
-    {
-        if (!this.charactersCoCreated.contains(character)) 
-        {
+    public void addCharacterCoCreated(ComicCharacter character) {
+        if (!this.charactersCoCreated.contains(character)) {
             this.charactersCoCreated.add(character);
         }
     }
 
     // --- Getters ---
-    public String getName() 
-    {
+    public String getName() {
         return name;
     }
-    
-    public String getNationality()
-    {
+
+    public String getNationality() {
         return nationality;
     }
 
@@ -69,15 +62,16 @@ public class Artist
         this.nationality = nationality;
     }
 
-    
-    public List<ComicBook> getComicBooksWorkedOn() 
-    {
+    public List<ComicBook> getComicBooksWorkedOn() {
         return comicBooksWorkedOn;
     }
-    
-    public List<ComicCharacter> getCharactersCoCreated() 
-    {
+
+    public List<ComicCharacter> getCharactersCoCreated() {
         return charactersCoCreated;
     }
+    
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
-
