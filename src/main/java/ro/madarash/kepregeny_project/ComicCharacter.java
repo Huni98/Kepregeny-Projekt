@@ -60,7 +60,7 @@ public abstract class ComicCharacter {
     }
 
     /**
-     * NEW: Adds a creating artist to this character.
+     * Adds a creating artist to this character.
      *
      * @param artist The artist who co-created the character.
      * @param role Their role (e.g., "Co-creator (Penciler)").
@@ -74,7 +74,7 @@ public abstract class ComicCharacter {
     }
 
     /**
-     * NEW: Adds a creating writer to this character. (Method Overload)
+     * Adds a creating writer to this character. (Method Overload)
      *
      * @param writer The writer who co-created the character.
      * @param role Their role (e.g., "Co-creator (Writer)").
@@ -111,12 +111,12 @@ public abstract class ComicCharacter {
         return originStory;
     }
 
-    // Getter for the Artist creators map
+    
     public Map<Artist, String> getCreatorArtists() {
         return creatorArtists;
     }
 
-    // Getter for the Writer creators map
+    
     public Map<Writer, String> getCreatorWriters() {
         return creatorWriters;
     }
