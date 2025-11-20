@@ -91,7 +91,6 @@ public class ComicBook {
         return editions;
     }
 
-   
     public List<Artist> getArtists() {
         return artists;
     }

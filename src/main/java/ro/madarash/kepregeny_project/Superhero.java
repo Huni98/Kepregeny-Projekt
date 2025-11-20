@@ -34,7 +34,7 @@ public class Superhero extends ComicCharacter implements IPowerful {
         return this.powers;
     }
 
-    // Methods to add powers, affiliations, etc.
+    
     @Override
     public void addPower(String power) {
         this.powers.add(power);

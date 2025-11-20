@@ -12,20 +12,9 @@ import java.util.List;
  */
 public interface IPowerful {
     
-    /**
-     * Gets the list of powers for this character.
-     * @return A List of strings describing the powers.
-     */
     List<String> getPowers();
     
-    /**
-     * Adds a power to the character's list.
-     * @param power A string description of the power.
-     */
     void addPower(String power);
     
-    /**
-     * Clears all powers from the character's list.
-     */
     void clearPowers();
 }
